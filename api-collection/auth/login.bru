@@ -1,0 +1,22 @@
+meta {
+  name: Login User
+  type: http
+}
+
+post {
+  url: {{base_url}}/api/auth/login
+  body: json
+}
+
+headers {
+  Content-Type: application/json
+}
+
+body {
+  json {
+    {
+      "email": "{{email}}",
+      "password": "{{password}}"
+    }
+  }
+}

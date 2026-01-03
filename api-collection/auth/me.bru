@@ -1,0 +1,12 @@
+meta {
+  name: Get User Profile
+  type: http
+}
+
+get {
+  url: {{base_url}}/api/auth/me
+}
+
+headers {
+  Authorization: Bearer {{access_token}}
+}

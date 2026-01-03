@@ -1,0 +1,12 @@
+meta {
+  name: Get Analytics
+  type: http
+}
+
+get {
+  url: {{base_url}}/api/projects/{{project_id}}/analytics
+}
+
+headers {
+  Authorization: Bearer {{access_token}}
+}

@@ -1,0 +1,12 @@
+meta {
+  name: Delete Project
+  type: http
+}
+
+delete {
+  url: {{base_url}}/api/projects/{{project_id}}
+}
+
+headers {
+  Authorization: Bearer {{access_token}}
+}

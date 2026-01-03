@@ -1,0 +1,22 @@
+meta {
+  name: Create API Key
+  type: http
+}
+
+post {
+  url: {{base_url}}/api/api-keys
+  body: json
+}
+
+headers {
+  Authorization: Bearer {{access_token}}
+  Content-Type: application/json
+}
+
+body {
+  json {
+    {
+      "name": "{{name}}"
+    }
+  }
+}

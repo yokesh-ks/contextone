@@ -1,0 +1,19 @@
+meta {
+  name: Upload Document
+  type: http
+}
+
+post {
+  url: {{base_url}}/api/projects/{{project_id}}/documents
+  body: multipart-form
+}
+
+headers {
+  Authorization: Bearer {{access_token}}
+}
+
+body {
+  multipart-form {
+    file: {{file}}
+  }
+}
