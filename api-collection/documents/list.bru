@@ -1,0 +1,12 @@
+meta {
+  name: List Documents
+  type: http
+}
+
+get {
+  url: {{base_url}}/api/projects/{{project_id}}/documents
+}
+
+headers {
+  Authorization: Bearer {{access_token}}
+}

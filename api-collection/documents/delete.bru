@@ -1,0 +1,12 @@
+meta {
+  name: Delete Document
+  type: http
+}
+
+delete {
+  url: {{base_url}}/api/projects/{{project_id}}/documents/{{doc_id}}
+}
+
+headers {
+  Authorization: Bearer {{access_token}}
+}

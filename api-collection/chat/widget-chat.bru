@@ -1,0 +1,23 @@
+meta {
+  name: Widget Chat
+  type: http
+}
+
+post {
+  url: {{base_url}}/api/widget/{{project_id}}/chat
+  body: json
+}
+
+headers {
+  X-API-Key: {{api_key}}
+  Content-Type: application/json
+}
+
+body {
+  json {
+    {
+      "query": "{{query}}",
+      "conversation_history": {{conversation_history}}
+    }
+  }
+}

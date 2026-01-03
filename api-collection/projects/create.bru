@@ -1,0 +1,29 @@
+meta {
+  name: Create Project
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}/api/projects
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{access_token}}
+  Content-Type: application/json
+}
+
+body:json {
+  json {
+    {
+      "name": "{{name}}",
+      "description": "{{description}}"
+    }
+  }
+}
+
+vars:pre-request {
+  access_token: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJ1c2VyX2U1M2FkNmQ4OTg1MSIsInRlbmFudF9pZCI6InRlbmFudF83ZTc0NTZjNDlkY2EiLCJleHAiOjE3Njc0NTEwMjgsInR5cGUiOiJhY2Nlc3MifQ.mj4rFBL5hmLcDFGs4F6yx4s_bfaF0CyhCLYPBqz_R08
+}

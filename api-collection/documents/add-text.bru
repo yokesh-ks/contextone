@@ -1,0 +1,23 @@
+meta {
+  name: Add Text Content
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{base_url}}/api/projects/{{project_id}}/documents/text
+  body: json
+  auth: none
+}
+
+headers {
+  Authorization: Bearer {{access_token}}
+  Content-Type: application/json
+}
+
+body:json {
+  {
+    "title": "Sample Note",
+    "content": "Lead Full Stack Engineer with 4+ years of experience building and scaling production-grade SaaS platforms across frontend architecture, backend systems, and data infrastructure. Proven track record of leading engineering teams, defining technical roadmaps, and owning critical architectural decisions for enterprise CRM, healthcare-compliant platforms, and AI-powered products serving 10+ B2B clients.Strong expertise in React and Next.js-driven frontend architecture, Node.js backend systems, and cloud-native deployments, with deep experience in zero-downtime migrations, multi-tenant architectures, and cross-functional execution."
+  }
+}

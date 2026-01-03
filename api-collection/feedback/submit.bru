@@ -1,0 +1,25 @@
+meta {
+  name: Submit Feedback
+  type: http
+}
+
+post {
+  url: {{base_url}}/api/feedback
+  body: json
+}
+
+headers {
+  Authorization: Bearer {{access_token}}
+  Content-Type: application/json
+}
+
+body {
+  json {
+    {
+      "conversation_id": "{{conversation_id}}",
+      "message_id": "{{message_id}}",
+      "rating": {{rating}},
+      "comment": "{{comment}}"
+    }
+  }
+}

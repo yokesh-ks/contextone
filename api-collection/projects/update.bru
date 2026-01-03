@@ -1,0 +1,29 @@
+meta {
+  name: Update Project
+  type: http
+}
+
+patch {
+  url: {{base_url}}/api/projects/{{project_id}}
+  body: json
+}
+
+headers {
+  Authorization: Bearer {{access_token}}
+  Content-Type: application/json
+}
+
+body {
+  json {
+    {
+      "name": "{{name}}",
+      "description": "{{description}}",
+      "system_prompt": "{{system_prompt}}",
+      "welcome_message": "{{welcome_message}}",
+      "fallback_message": "{{fallback_message}}",
+      "ui_config": {{ui_config}},
+      "model_config_data": {{model_config_data}},
+      "status": "{{status}}"
+    }
+  }
+}

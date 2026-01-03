@@ -11,6 +11,134 @@ ContextOne is an enterprise-grade, multi-tenant Retrieval-Augmented Generation (
 - **Production-Grade:** Scales to 10,000+ concurrent users with Supabase + VPS
 - **Resume-Ready:** Full-stack SaaS architecture demonstrating AI, DevOps, and system design
 
+## RAG Introduction
+
+### What is Retrieval-Augmented Generation (RAG)?
+
+Retrieval-Augmented Generation (RAG) is a cutting-edge AI technique that combines the power of large language models with external knowledge retrieval to provide more accurate, up-to-date, and contextually relevant responses. Unlike traditional language models that rely solely on their training data, RAG systems dynamically retrieve relevant information from a knowledge base before generating answers.
+
+#### Key Benefits of RAG:
+- **Reduced Hallucinations:** By grounding responses in verified source material
+- **Domain-Specific Accuracy:** Tailored responses based on your organization's documentation
+- **Always Current:** Can incorporate the latest information without model retraining
+- **Explainable AI:** Responses include source citations for transparency
+
+### RAG Architecture
+
+A typical RAG system consists of three main components:
+
+1. **Document Processing Pipeline**
+   - Document ingestion and parsing
+   - Text chunking and preprocessing
+   - Embedding generation
+   - Vector storage in a database
+
+2. **Retrieval System**
+   - Query embedding
+   - Similarity search in vector space
+   - Context ranking and selection
+
+3. **Generation Engine**
+   - Context integration with prompts
+   - LLM inference
+   - Response post-processing
+
+[Image: RAG Architecture Diagram showing document processing, retrieval, and generation components]
+
+### Key RAG Techniques
+
+#### Chunking Strategies
+- **Fixed-Length Chunking:** Divides text into equal-sized segments
+- **Semantic Chunking:** Splits based on meaning and context boundaries
+- **Hierarchical Chunking:** Creates multiple levels of granularity
+
+#### Embedding Methods
+- **Dense Embeddings:** Transformer-based models like BERT, RoBERTa
+- **Sparse Embeddings:** TF-IDF, BM25 for keyword-based retrieval
+- **Hybrid Approaches:** Combining dense and sparse methods
+
+#### Retrieval Optimization
+- **Re-ranking:** Advanced algorithms to improve result relevance
+- **Query Expansion:** Augmenting queries with synonyms and related terms
+- **Multi-Modal Retrieval:** Handling text, images, and structured data
+
+### System Overview
+
+ContextOne implements a production-grade RAG architecture designed for enterprise use:
+
+#### Data Flow:
+1. **Ingestion:** Documents uploaded via dashboard → Parsed and chunked
+2. **Indexing:** Chunks converted to embeddings → Stored in Qdrant vector database
+3. **Query Processing:** User question → Embedded → Similarity search
+4. **Generation:** Retrieved context + question → LLM → Response with citations
+
+#### Scalability Features:
+- Horizontal scaling across multiple Qdrant instances
+- Multi-tenant isolation with tenant-specific vector partitions
+- Caching layers for frequently accessed documents
+- Async processing for large document uploads
+
+### Backend Components
+
+#### Document Processor
+```python
+# Example: PDF processing pipeline
+def process_document(file_path: str, tenant_id: str):
+    # Extract text from PDF
+    text = extract_text_from_pdf(file_path)
+
+    # Chunk the text
+    chunks = semantic_chunking(text)
+
+    # Generate embeddings
+    embeddings = embed_chunks(chunks)
+
+    # Store in vector database
+    store_embeddings(chunks, embeddings, tenant_id)
+```
+
+#### Vector Database (Qdrant)
+- Native multi-tenancy support via payload filtering
+- High-performance HNSW indexing for fast similarity search
+- RESTful API with Python client integration
+- Docker-based deployment for easy scaling
+
+#### LLM Integration (IBM watsonx.ai)
+- Access to enterprise-grade Granite and Llama models
+- Cost-effective inference with no per-token charges for trial
+- Structured API for prompt engineering and response parsing
+- Support for custom model fine-tuning (future enhancement)
+
+#### API Layer (FastAPI)
+- Async endpoints for real-time chat
+- Automatic OpenAPI documentation generation
+- Built-in authentication and rate limiting
+- Structured logging and error handling
+
+### Advanced RAG Techniques
+
+#### Query Routing
+- **Intent Classification:** Routes queries to specialized retrievers
+- **Multi-Hop Retrieval:** Follows chains of related information
+- **Conversational Memory:** Maintains context across chat sessions
+
+#### Response Enhancement
+- **Citation Generation:** Automatic source attribution
+- **Confidence Scoring:** Indicates response reliability
+- **Follow-up Suggestions:** Proactive question recommendations
+
+#### Performance Optimization
+- **Quantized Embeddings:** Reduced memory footprint
+- **Approximate Nearest Neighbors:** Trade accuracy for speed
+- **Caching Strategies:** Redis-based result caching
+
+#### Evaluation and Monitoring
+- **Retrieval Metrics:** Precision, recall, mean reciprocal rank
+- **Generation Quality:** ROUGE scores, human evaluation
+- **User Feedback Integration:** Continuous improvement loop
+
+This RAG implementation in ContextOne demonstrates how modern AI systems can provide enterprise-grade conversational AI while maintaining strict data privacy and operational efficiency.
+
 ## Key Features
 
 - **Multi-Tenant RAG Platform:** Secure isolation between users with Supabase Row Level Security

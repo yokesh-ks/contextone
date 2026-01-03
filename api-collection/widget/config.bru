@@ -1,0 +1,12 @@
+meta {
+  name: Get Widget Config
+  type: http
+}
+
+get {
+  url: {{base_url}}/api/widget/{{project_id}}/config
+}
+
+headers {
+  X-API-Key: {{api_key}}
+}
